@@ -49,18 +49,6 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="app-dashboard-default.html#!">
-                                    <i class="material-icons leading-icon">settings</i>
-                                    <div class="me-3">Settings</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="app-dashboard-default.html#!">
-                                    <i class="material-icons leading-icon">help</i>
-                                    <div class="me-3">Help</div>
-                                </a>
-                            </li>
-                            <li>
                                 <hr class="dropdown-divider" />
                             </li>
                             <li>
@@ -83,6 +71,11 @@
                 <div class="drawer-menu">
                     <div class="nav">
                         <div class="drawer-menu-heading font-weight-bold">Overview</div>
+                        <a class="nav-link collapsed" href="{{ route('dashboard') }}">
+                        <div class="nav-link-icon"><i
+                                class="material-icons company_secondary_color_txt">dashboard</i></div>
+                        Dashboard
+                    </a>
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
                             data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="nav-link-icon"><i class="material-icons company_secondary_color_txt">group_add</i>

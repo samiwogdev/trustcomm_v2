@@ -22,6 +22,7 @@ Route::get('rm_portfolio', function () {
     return view('admin_view.rm_report.rm_portfolio');
 })->name('rm_report.rm_portfolio');
 
-Route::get('master', function(){
-return view('admin_view.design_master');
-});
+Route::get('dashboard', function () {
+    return view('admin_view.rm_report.dashboard');
+})->name('dashboard');
+
