@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('front_landing_view.index');
+});
+
+Route::get('rm_portfolio', function () {
+    return view('admin_view.rm_report.rm_portfolio');
+})->name('rm_report.rm_portfolio');
+
+Route::get('master', function(){
+return view('admin_view.design_master');
 });
