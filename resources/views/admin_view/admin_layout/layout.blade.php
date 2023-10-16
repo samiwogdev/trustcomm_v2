@@ -72,33 +72,40 @@
                     <div class="nav">
                         <div class="drawer-menu-heading font-weight-bold">Overview</div>
                         <a class="nav-link collapsed" href="{{ route('dashboard') }}">
-                        <div class="nav-link-icon"><i
-                                class="material-icons company_secondary_color_txt">dashboard</i></div>
-                        Dashboard
-                    </a>
+                            <div class="nav-link-icon"><i
+                                    class="material-icons company_secondary_color_txt">dashboard</i></div>
+                            Dashboard
+                        </a>
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
                             data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="nav-link-icon"><i class="material-icons company_secondary_color_txt">group_add</i>
+                            <div class="nav-link-icon"><i
+                                    class="material-icons company_secondary_color_txt">group_add</i>
                             </div>
                             Relationship Manager
-                            <div class="drawer-collapse-arrow company_secondary_color_txt"><i class="material-icons">expand_more</i></div>
+                            <div class="drawer-collapse-arrow company_secondary_color_txt"><i
+                                    class="material-icons">expand_more</i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#drawerAccordion">
                             <nav class="drawer-menu-nested nav">
-                                <a class="nav-link company_primary_color" href="layout-dark.html">Account Cabal</a>
-                                <a class="nav-link company_primary_color" href="layout-light.html">Account Cabal (Average)</a>
-                                <a class="nav-link company_primary_color" href="layout-static.html">Account Cabal (Department)</a>
+                                <a class="nav-link company_primary_color" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#account_cabal_id">Account Cabal</a>
+                                <a class="nav-link company_primary_color" href="layout-light.html">Account Cabal
+                                    (Average)</a>
+                                <a class="nav-link company_primary_color" href="layout-static.html">Account Cabal
+                                    (Department)</a>
                             </nav>
                         </div>
                         <div class="drawer-menu-divider" style="margin-top:5px"></div>
 
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
                             data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts1">
-                            <div class="nav-link-icon"><i class="material-icons company_secondary_color_txt">insights</i>
+                            <div class="nav-link-icon"><i
+                                    class="material-icons company_secondary_color_txt">insights</i>
                             </div>
                             Finance
-                            <div class="drawer-collapse-arrow company_secondary_color_txt"><i class="material-icons">expand_more</i></div>
+                            <div class="drawer-collapse-arrow company_secondary_color_txt"><i
+                                    class="material-icons">expand_more</i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts1" aria-labelledby="headingtwo"
                             data-bs-parent="#drawerAccordion">
@@ -109,11 +116,13 @@
                         </div>
                         <div class="drawer-menu-divider" style="margin-top:5px"></div>
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts2">
+                            data-bs-target="#collapseLayouts2" aria-expanded="false"
+                            aria-controls="collapseLayouts2">
                             <div class="nav-link-icon"><i
                                     class="material-icons company_secondary_color_txt">account_balance</i></div>
                             Credit
-                            <div class="drawer-collapse-arrow company_secondary_color_txt"><i class="material-icons">expand_more</i></div>
+                            <div class="drawer-collapse-arrow company_secondary_color_txt"><i
+                                    class="material-icons">expand_more</i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts2" aria-labelledby="headingthree"
                             data-bs-parent="#drawerAccordion">
@@ -123,11 +132,13 @@
                         </div>
                         <div class="drawer-menu-divider" style="margin-top:5px"></div>
                         <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts3">
+                            data-bs-target="#collapseLayouts3" aria-expanded="false"
+                            aria-controls="collapseLayouts3">
                             <div class="nav-link-icon"><i
                                     class="material-icons company_secondary_color_txt">person_add_disabled</i></div>
                             AML Sanctioned List
-                            <div class="drawer-collapse-arrow company_secondary_color_txt"><i class="material-icons">expand_more</i></div>
+                            <div class="drawer-collapse-arrow company_secondary_color_txt"><i
+                                    class="material-icons">expand_more</i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts3" aria-labelledby="headingfour"
                             data-bs-parent="#drawerAccordion">
@@ -140,7 +151,8 @@
                 <!-- Drawer footer  -->
                 <div class="drawer-footer border-top">
                     <div class="d-flex align-items-center">
-                        <img class="rounded-circle pr-3" src="{{'assets/img/Adedeji-olumide.png'}}" style="height: 30px;"/>
+                        <img class="rounded-circle pr-3" src="{{ 'assets/img/Adedeji-olumide.png' }}"
+                            style="height: 30px;" />
                         <div class="ms-3">
                             <div class="caption">Logged in as:</div>
                             <div class="small fw-500">John Stones</div>
@@ -176,6 +188,29 @@
             </footer>
         </div>
     </div>
+
+    <div class="modal fade" id="account_cabal_id" tabindex="-1" aria-labelledby="accont_cabal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="accont_cabal">Get this party started?</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+
+                        <mwc-textfield label="Select Me!" outlined helper="Hello there!"></mwc-textfield>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-text-primary me-2" type="button" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-text-primary" type="button">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Load Bootstrap JS bundle-->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
     {{-- <script src="{{ asset('assets/js/bootstrap-5.3.1/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script> --}}
@@ -236,10 +271,10 @@
         var myPieChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: [ 'Expected Target: 9,800,060,000.25', 'Achieved Target: 1,878,098,765.32'],
+                labels: ['Expected Target: 9,800,060,000.25', 'Achieved Target: 1,878,098,765.32'],
                 datasets: [{
-                    data: [ 9800660000.25, 1878098765.32],
-                    backgroundColor: [ infoColor, warningColor],
+                    data: [9800660000.25, 1878098765.32],
+                    backgroundColor: [infoColor, warningColor],
                 }],
             },
         });
