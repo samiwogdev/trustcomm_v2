@@ -22,7 +22,15 @@ Route::get('rm_portfolio', function () {
     return view('admin_view.rm_report.rm_portfolio');
 })->name('rm_report.rm_portfolio');
 
-Route::get('dashboard', function () {
+Route::get('/rm_position', function () {
+    return view('admin_view.rm_report.rm_position');
+})->name('rm_position');
+
+Route::get('/rm_position_avg', function () {
+    return view('admin_view.rm_report.rm_position_avg');
+})->name('rm_position_avg');
+
+Route::get('/dashboard', function () {
     return view('admin_view.rm_report.dashboard');
 })->name('dashboard');
 

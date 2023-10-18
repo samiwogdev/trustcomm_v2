@@ -19,6 +19,13 @@
     <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" />
     <!-- Load Material Icons from Google Fonts-->
     <link href="{{ asset('assets/css/google-font.css') }}" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/style.css" rel="stylesheet" />
+    {{-- <link href="{{ asset('assets/library/bootstrap-5/bootstrap.min.css') }}" rel="stylesheet" /> --}}
+    <style>
+        .form-select {
+            line-height: 2.5 !important;
+        }
+    </style>
 </head>
 
 <body class="nav-fixed bg-light">
@@ -81,19 +88,18 @@
                             <div class="nav-link-icon"><i
                                     class="material-icons company_secondary_color_txt">group_add</i>
                             </div>
-                            Relationship Manager
+                            CRM Report
                             <div class="drawer-collapse-arrow company_secondary_color_txt"><i
                                     class="material-icons">expand_more</i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#drawerAccordion">
                             <nav class="drawer-menu-nested nav">
-                                <a class="nav-link company_primary_color" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#account_cabal_id">Account Cabal</a>
-                                <a class="nav-link company_primary_color" href="layout-light.html">Account Cabal
+                                <a class="nav-link company_primary_color" href="{{ route('rm_position') }}">RM
+                                    Position</a>
+                                <a class="nav-link company_primary_color" href="{{ route('rm_position_avg') }}">RM
+                                    Position
                                     (Average)</a>
-                                <a class="nav-link company_primary_color" href="layout-static.html">Account Cabal
-                                    (Department)</a>
                             </nav>
                         </div>
                         <div class="drawer-menu-divider" style="margin-top:5px"></div>
@@ -103,7 +109,7 @@
                             <div class="nav-link-icon"><i
                                     class="material-icons company_secondary_color_txt">insights</i>
                             </div>
-                            Finance
+                            Finance Report
                             <div class="drawer-collapse-arrow company_secondary_color_txt"><i
                                     class="material-icons">expand_more</i></div>
                         </a>
@@ -120,7 +126,7 @@
                             aria-controls="collapseLayouts2">
                             <div class="nav-link-icon"><i
                                     class="material-icons company_secondary_color_txt">account_balance</i></div>
-                            Credit
+                            Credit Report
                             <div class="drawer-collapse-arrow company_secondary_color_txt"><i
                                     class="material-icons">expand_more</i></div>
                         </a>
@@ -135,15 +141,15 @@
                             data-bs-target="#collapseLayouts3" aria-expanded="false"
                             aria-controls="collapseLayouts3">
                             <div class="nav-link-icon"><i
-                                    class="material-icons company_secondary_color_txt">person_add_disabled</i></div>
-                            AML Sanctioned List
+                             class="material-icons company_secondary_color_txt">person_add_disabled</i></div>
+                            Operations Report
                             <div class="drawer-collapse-arrow company_secondary_color_txt"><i
                                     class="material-icons">expand_more</i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts3" aria-labelledby="headingfour"
                             data-bs-parent="#drawerAccordion">
                             <nav class="drawer-menu-nested nav">
-                                <a class="nav-link company_primary_color" href="layout-dark.html">Sanctioned List</a>
+                                <a class="nav-link company_primary_color" href="layout-dark.html">AML Sanctioned List</a>
                             </nav>
                         </div>
                     </div>
@@ -189,27 +195,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="account_cabal_id" tabindex="-1" aria-labelledby="accont_cabal" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="accont_cabal">Get this party started?</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="">
 
-                        <mwc-textfield label="Select Me!" outlined helper="Hello there!"></mwc-textfield>
-                    </form>
-
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-text-primary me-2" type="button" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-text-primary" type="button">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Load Bootstrap JS bundle-->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
@@ -227,44 +213,12 @@
     <!-- Load Simple DataTables Scripts-->
     <script src="{{ asset('assets/js/simple-datatables.min.js') }}" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/js/datatables/datatables-simple-demo.js') }}"></script>
-    {{-- <script>
-        (function() {
-            var js =
-                "window['__CF$cv$params']={r:'7fdcd74aac5fb8bb',t:'MTY5MzIyODcxNC44MDYwMDA='};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";
-            var _0xh = document.createElement('iframe');
-            _0xh.height = 1;
-            _0xh.width = 1;
-            _0xh.style.position = 'absolute';
-            _0xh.style.top = 0;
-            _0xh.style.left = 0;
-            _0xh.style.border = 'none';
-            _0xh.style.visibility = 'hidden';
-            document.body.appendChild(_0xh);
-
-            function handler() {
-                var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;
-                if (_0xi) {
-                    var _0xj = _0xi.createElement('script');
-                    _0xj.innerHTML = js;
-                    _0xi.getElementsByTagName('head')[0].appendChild(_0xj);
-                }
-            }
-            if (document.readyState !== 'loading') {
-                handler();
-            } else if (window.addEventListener) {
-                document.addEventListener('DOMContentLoaded', handler);
-            } else {
-                var prev = document.onreadystatechange || function() {};
-                document.onreadystatechange = function(e) {
-                    prev(e);
-                    if (document.readyState !== 'loading') {
-                        document.onreadystatechange = prev;
-                        handler();
-                    }
-                };
-            }
-        })();
-    </script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/js/main.nocss.js" crossorigin="anonymous"></script>
+    <script src="https://assets.startbootstrap.com/js/sb-customizer.js"></script>
+    <script src="{{ asset('assets/js/litepicker.js') }}"></script>
+    <script src="{{ asset('assets/js/prism.js') }}"></script>
+    {{-- <script src="{{ asset('assets/library/bootstrap-5/bootstrap.bundle.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/library/dselect.js') }}"></script>
     {{-- <script defer src="{{ asset('assets/js/beacon.min.js') }}"></script> --}}
     <script>
         var ctx = document.getElementById('myPieChart').getContext('2d');
@@ -277,6 +231,57 @@
                     backgroundColor: [infoColor, warningColor],
                 }],
             },
+        });
+    </script>
+    <!-- litepicker instance-->
+    <script>
+        const picker1 = new Litepicker({
+            element: document.getElementById('datePicker1'),
+            format: 'YYYY-MM-DD',
+            // Additional options for the first date picker
+        });
+
+        const picker2 = new Litepicker({
+            element: document.getElementById('datePicker2'),
+            format: 'DD/MM/YYYY',
+            // Additional options for the second date picker
+        });
+
+        const picker3 = new Litepicker({
+            element: document.getElementById('datePicker3'),
+            format: 'DD/MM/YYYY',
+            // Additional options for the second date picker
+        });
+
+        const picker4 = new Litepicker({
+            element: document.getElementById('datePicker4'),
+            format: 'DD/MM/YYYY',
+            // Additional options for the second date picker
+        });
+
+        const picker5 = new Litepicker({
+            element: document.getElementById('datePicker5'),
+            format: 'DD/MM/YYYY',
+            // Additional options for the second date picker
+        });
+
+        const picker6 = new Litepicker({
+            element: document.getElementById('datePicker6'),
+            format: 'DD/MM/YYYY',
+            // Additional options for the second date picker
+        });
+    </script>
+    <!-- end litepicker instance-->
+
+    <!-- bootstrap select box-->
+    <script>
+        var select_box_element = document.querySelector('#select_box');
+        dselect(select_box_element, {
+            search: true
+        });
+        var select_box_element = document.querySelector('#select_box2');
+        dselect(select_box_element, {
+            search: true
         });
     </script>
 </body>

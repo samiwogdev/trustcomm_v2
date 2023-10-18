@@ -11,7 +11,8 @@
             <div class="col-12 col-md-auto">
                 <div class="d-flex flex-column flex-sm-row gap-3">
                     <mwc-select class="mw-50 mb-2 mb-md-0" outlined="" label="select report">
-                        <mwc-list-item value="1">Deposit Cabal</mwc-list-item>
+                        <mwc-list-item type="button" data-bs-toggle="modal"
+                        data-bs-target="#account_cabal_id">Deposit Cabal</mwc-list-item>
                         <mwc-list-item value="2">Risk Asset Cabal</mwc-list-item>
                         <mwc-list-item value="2">Account Position</mwc-list-item>
                     </mwc-select>
@@ -187,5 +188,28 @@
         </div>
     </div>
 </main>
+
+{{-- Modal Section --}}
+<div class="modal fade" id="account_cabal_id" tabindex="-1" aria-labelledby="accont_cabal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="accont_cabal">Get this party started?</h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+
+                    <mwc-textfield label="Select Me!" outlined helper="Hello there!"></mwc-textfield>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-text-primary me-2" type="button" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-text-primary" type="button">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
