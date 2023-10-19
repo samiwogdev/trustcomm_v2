@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rm_cabal_target', function (Blueprint $table) {
+        Schema::create('auth_user', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique;
-            $table->string('rm_DepositTarget')->default(0);
-            $table->string('rm_loanTarget')->default(0);
-            $table->string('rm_Pip_depositTarget');
-            $table->string('rm_pip_loanTarget');
-            $table->string('updatedby')->default('0');
+            $table->string('email');
+            $table->string('password');
+            $table->string("login_status");
+            $table->string("last_login");
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rm_pip_target');
+        Schema::dropIfExists('auth_user');
     }
 };
