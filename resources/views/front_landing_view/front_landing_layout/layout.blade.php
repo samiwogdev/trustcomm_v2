@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="LTMB MIS Application"/>
-        <link href="{{ asset('assets/front_landing/img/logo.png') }}" rel="shortcut icon" type="image/x-icon">
+        <link href="{{ asset('assets/front_landing/img/livingtrust-logo.png') }}" rel="shortcut icon" type="image/x-icon">
 
         <link href="{{ asset('assets/front_landing/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
         <link href="{{ asset('assets/front_landing/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />

@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rm_branch', function (Blueprint $table) {
+        Schema::create('auth_users', function (Blueprint $table) {
             $table->id();
-            $table->string('rm_branchCode');
-            $table->string('rm_branchName');
+            $table->string('email');
+            $table->string('password');
+            $table->string("login_status");
+            $table->string("last_login");
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rm_branch');
+        Schema::dropIfExists('auth_users');
     }
 };

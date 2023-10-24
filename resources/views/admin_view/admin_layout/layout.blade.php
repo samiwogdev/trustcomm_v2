@@ -9,7 +9,7 @@
     <meta name="author"content="" />
     <title>Dashboard - Material Admin Pro</title>
     <!-- Load Favicon-->
-    <link href="{{ asset('assets/front_landing/img/logo.png') }}" rel="shortcut icon" type="image/x-icon" />
+    <link href="{{ asset('assets/front_landing/img/livingtrust-logo.png') }}" rel="shortcut icon" type="image/x-icon" />
     <!-- Load Simple DataTables Stylesheet-->
     <link href="{{ asset('assets/css/simple-datatables.css') }}" rel="stylesheet" />
     <!-- Roboto and Roboto Mono fonts from Google Fonts-->
@@ -23,7 +23,7 @@
     {{-- <link href="{{ asset('assets/library/bootstrap-5/bootstrap.min.css') }}" rel="stylesheet" /> --}}
     <style>
         .form-select {
-            line-height: 2.5 !important;
+            line-height: 2.8 !important;
         }
     </style>
 </head>
@@ -157,11 +157,11 @@
                 <!-- Drawer footer  -->
                 <div class="drawer-footer border-top">
                     <div class="d-flex align-items-center">
-                        <img class="rounded-circle pr-3" src="{{ 'assets/img/Adedeji-olumide.png' }}"
+                        <img class="rounded-circle pr-3" src="{{ 'assets/img/Adedeji-olumide.jpg' }}"
                             style="height: 30px;" />
                         <div class="ms-3">
                             <div class="caption">Logged in as:</div>
-                            <div class="small fw-500">John Stones</div>
+                            <div class="small fw-500">Samuel Ogunbodede</div>
                         </div>
                     </div>
                 </div>
@@ -220,19 +220,21 @@
     {{-- <script src="{{ asset('assets/library/bootstrap-5/bootstrap.bundle.min.js') }}"></script> --}}
     <script src="{{ asset('assets/library/dselect.js') }}"></script>
     {{-- <script defer src="{{ asset('assets/js/beacon.min.js') }}"></script> --}}
+    @if (isset($apiData))
     <script>
         var ctx = document.getElementById('myPieChart').getContext('2d');
         var myPieChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['Expected Target: 9,800,060,000.25', 'Achieved Target: 1,878,098,765.32'],
+                labels: [ 'Loan: '+@json(number_format($loan)), 'Deposit: '+@json(number_format($deposit))],
                 datasets: [{
-                    data: [9800660000.25, 1878098765.32],
+                    data: [{{ $loan }}, {{ $deposit }}],
                     backgroundColor: [infoColor, warningColor],
                 }],
             },
         });
     </script>
+    @endif
     <!-- litepicker instance-->
     <script>
         const picker1 = new Litepicker({
@@ -241,33 +243,33 @@
             // Additional options for the first date picker
         });
 
-        const picker2 = new Litepicker({
-            element: document.getElementById('datePicker2'),
-            format: 'DD/MM/YYYY',
-            // Additional options for the second date picker
-        });
+        // const picker2 = new Litepicker({
+        //     element: document.getElementById('datePicker2'),
+        //     format: 'YYYY-MM-DD',
+        //     // Additional options for the second date picker
+        // });
 
-        const picker3 = new Litepicker({
-            element: document.getElementById('datePicker3'),
-            format: 'DD/MM/YYYY',
-            // Additional options for the second date picker
-        });
+        // const picker3 = new Litepicker({
+        //     element: document.getElementById('datePicker3'),
+        //     format: 'YYYY-MM-DD',
+        //     // Additional options for the second date picker
+        // });
 
-        const picker4 = new Litepicker({
-            element: document.getElementById('datePicker4'),
-            format: 'DD/MM/YYYY',
-            // Additional options for the second date picker
-        });
+        // const picker4 = new Litepicker({
+        //     element: document.getElementById('datePicker4'),
+        //     format: 'YYYY-MM-DD',
+        //     // Additional options for the second date picker
+        // });
 
-        const picker5 = new Litepicker({
-            element: document.getElementById('datePicker5'),
-            format: 'DD/MM/YYYY',
-            // Additional options for the second date picker
-        });
+        // const picker5 = new Litepicker({
+        //     element: document.getElementById('datePicker5'),
+        //     format: 'YYYY-MM-DD',
+        //     // Additional options for the second date picker
+        // });
 
         const picker6 = new Litepicker({
             element: document.getElementById('datePicker6'),
-            format: 'DD/MM/YYYY',
+            format: 'YYYY-MM-DD',
             // Additional options for the second date picker
         });
     </script>
@@ -280,6 +282,10 @@
             search: true
         });
         var select_box_element = document.querySelector('#select_box2');
+        dselect(select_box_element, {
+            search: true
+        });
+        var select_box_element = document.querySelector('#select_box3');
         dselect(select_box_element, {
             search: true
         });

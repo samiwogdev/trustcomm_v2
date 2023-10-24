@@ -47,10 +47,10 @@
                     </span>
                 </div>
                 <div class="header-left-bottom">
-                    <form action="{{ route('rm_report.rm_portfolio') }}">
+                    <form action="{{ route('authUser.login') }}" method="POST">@csrf
                         <div class="icon1">
                             <span class="fas fa-user"></span>
-                            <input name="username" type="text" placeholder="Username" required=""/>
+                            <input name="email" type="text" placeholder="Username" required=""/>
                         </div>
                         <div class="icon1">
                             <span class="fas fa-lock"></span>
