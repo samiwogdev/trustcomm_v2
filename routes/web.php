@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthUserController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RmPositionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,16 +17,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [AuthUserController::class, 'home'])->name('authUser.home');
-Route::post('login', [AuthUserController::class, 'login'])->name('authUser.login');
+Route::get('/', [AuthUserController::class, 'home'])->name('home');
+Route::post('login', [AuthUserController::class, 'login'])->name('login');
 
+
+// Restricted Routes
 Route::group(['middleware' => ['authUser']], function () {
-    //User Dashboard Route
-    Route::get('/dashboard', [AuthUserController::class, 'dashboard'])->name('authUser.dashboard');
-    Route::get('rm_position', [AuthUserController::class, 'rm_position'])->name('rm_position');
-    Route::post('/rm_position_data', [AuthUserController::class, 'rm_position_data'])->name('rm_position_data');
-    Route::post('/rm_position_data_branch', [AuthUserController::class, 'rm_position_data_branch'])->name('rm_position_data_branch');
-    Route::post('/rm_branch_data', [AuthUserController::class, 'rm_branch_data'])->name('rm_branch_data');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('authUser.dashboard');
+    Route::get('rm_position', [RmPositionController::class, 'rm_position'])->name('rm_position');
+    Route::match(['get', 'post'], '/rm_position_data', [RmPositionController::class, 'rm_position_data'])->name('rm_position_data');
+    Route::match(['get', 'post'], '/rm_position_data_branch', [RmPositionController::class, 'rm_position_data_branch'])->name('rm_position_data_branch');
+
+    // Route::post('/rm_branch_data', [RmPositionController::class, 'rm_branch_data'])->name('rm_branch_data');
+    Route::get('logout', [AuthUserController::class, 'logout'])->name('logout');
 });
 
 
@@ -32,14 +37,6 @@ Route::get('rm_portfolio', function () {
     return view('admin_view.rm_report.rm_portfolio');
 })->name('rm_report.rm_portfolio');
 
-// Route::get('/rm_position', function () {
-//     return view('admin_view.rm_report.rm_position');
-// })->name('rm_position');
-
 Route::get('/rm_position_avg', function () {
     return view('admin_view.rm_report.rm_position_avg');
 })->name('rm_position_avg');
-
-Route::get('/dashboard', function () {
-    return view('admin_view.rm_report.dashboard');
-})->name('dashboard');

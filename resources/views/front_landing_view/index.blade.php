@@ -46,17 +46,37 @@
                         <img src="{{ asset('assets/front_landing/img/livingtrust-logo.png') }}" style="height:70px">
                     </span>
                 </div>
+                @if (Session::has("error_message"))
+                <div class="alert alert-danger alert-dismissible fade show alert-danger-custom" role="alert">
+                  <p>  {{ Session::get('error_message') }} </p>
+                    {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button> --}}
+                  </div>
+                @endif
+                @if (count($errors) > 0)
+                  <div class="alert alert-danger alert-dismissible fade show alert-danger-custom" role="alert">
+                    @foreach ( $errors->all()  as $error )
+                 <p> {{ $error }}</p>
+                    {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button> --}}
+                    @endforeach
+                  </div>
+
+                @endif
+
                 <div class="header-left-bottom">
-                    <form action="{{ route('authUser.login') }}" method="POST">@csrf
+                    <form action="{{ route('login') }}" method="POST">@csrf
                         <div class="icon1">
                             <span class="fas fa-user"></span>
-                            <input name="email" type="text" placeholder="Username" required=""/>
+                            <input name="email" type="text" placeholder="Username" required/>
                         </div>
                         <div class="icon1">
                             <span class="fas fa-lock"></span>
-                            <input name="password" type="password" placeholder="Password" required=""/>
+                            <input name="password" type="password" placeholder="Password" required/>
                         </div>
-                        <div class="login-check">
+                        <div class="`-check">
                           <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Keep me logged in</label></a>
                         </div>
                         <div class="bottom">

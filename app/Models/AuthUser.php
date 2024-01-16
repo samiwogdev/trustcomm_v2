@@ -10,4 +10,10 @@ class AuthUser extends Authenticable
 {
     use HasFactory;
     protected $guard = 'authUser';
+    protected $table = 'auth_users';
+
+    public function rmRecord()
+    {
+        return $this->hasOne(RmRecord::class, 'rm_email', 'email');
+    }
 }

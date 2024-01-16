@@ -9,6 +9,10 @@ class RmRecord extends Model
 {
     use HasFactory;
 
-     // Specify the table name
-     protected $table = 'rm_records';
+    protected $table = 'rm_records';     // Specify the table name
+
+    public function authUser()
+    {
+        return $this->belongsTo(AuthUser::class, 'email', 'rm_email');
+    }
 }

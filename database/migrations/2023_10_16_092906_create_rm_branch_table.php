@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('rm_branchCode');
             $table->string('rm_branchName');
+            $table->string('rm_branchDetails');
             $table->timestamps();
         });
     }

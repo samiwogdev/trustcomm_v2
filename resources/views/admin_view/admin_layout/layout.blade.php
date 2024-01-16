@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author"content="" />
-    <title>Dashboard - Material Admin Pro</title>
+    <title>Trustcomm - V2.0</title>
     <!-- Load Favicon-->
     <link href="{{ asset('assets/front_landing/img/livingtrust-logo.png') }}" rel="shortcut icon" type="image/x-icon" />
     <!-- Load Simple DataTables Stylesheet-->
@@ -59,7 +59,7 @@
                                 <hr class="dropdown-divider" />
                             </li>
                             <li>
-                                <a class="dropdown-item" href="app-dashboard-default.html#!">
+                                <a class="dropdown-item" href="{{ route('logout') }}">
                                     <i class="material-icons leading-icon">logout</i>
                                     <div class="me-3">Logout</div>
                                 </a>
@@ -78,7 +78,7 @@
                 <div class="drawer-menu">
                     <div class="nav">
                         <div class="drawer-menu-heading font-weight-bold">Overview</div>
-                        <a class="nav-link collapsed" href="{{ route('dashboard') }}">
+                        <a class="nav-link collapsed" href="{{ route('authUser.dashboard') }}">
                             <div class="nav-link-icon"><i
                                     class="material-icons company_secondary_color_txt">dashboard</i></div>
                             Dashboard
@@ -141,7 +141,7 @@
                             data-bs-target="#collapseLayouts3" aria-expanded="false"
                             aria-controls="collapseLayouts3">
                             <div class="nav-link-icon"><i
-                             class="material-icons company_secondary_color_txt">person_add_disabled</i></div>
+                                    class="material-icons company_secondary_color_txt">person_add_disabled</i></div>
                             Operations Report
                             <div class="drawer-collapse-arrow company_secondary_color_txt"><i
                                     class="material-icons">expand_more</i></div>
@@ -149,7 +149,8 @@
                         <div class="collapse" id="collapseLayouts3" aria-labelledby="headingfour"
                             data-bs-parent="#drawerAccordion">
                             <nav class="drawer-menu-nested nav">
-                                <a class="nav-link company_primary_color" href="layout-dark.html">AML Sanctioned List</a>
+                                <a class="nav-link company_primary_color" href="layout-dark.html">AML Sanctioned
+                                    List</a>
                             </nav>
                         </div>
                     </div>
@@ -161,7 +162,9 @@
                             style="height: 30px;" />
                         <div class="ms-3">
                             <div class="caption">Logged in as:</div>
-                            <div class="small fw-500">Samuel Ogunbodede</div>
+                            <div class="small fw-500">
+                                {{ ucfirst(strtolower(Auth::guard('authUser')->user()->rmRecord->rm_firstName)) . ' ' . ucfirst(strtolower(Auth::guard('authUser')->user()->rmRecord->rm_lastName)) }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -196,7 +199,6 @@
     </div>
 
 
-
     <!-- Load Bootstrap JS bundle-->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
     {{-- <script src="{{ asset('assets/js/bootstrap-5.3.1/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script> --}}
@@ -221,19 +223,20 @@
     <script src="{{ asset('assets/library/dselect.js') }}"></script>
     {{-- <script defer src="{{ asset('assets/js/beacon.min.js') }}"></script> --}}
     @if (isset($apiData))
-    <script>
-        var ctx = document.getElementById('myPieChart').getContext('2d');
-        var myPieChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: [ 'Loan: '+@json(number_format($loan)), 'Deposit: '+@json(number_format($deposit))],
-                datasets: [{
-                    data: [{{ $loan }}, {{ $deposit }}],
-                    backgroundColor: [infoColor, warningColor],
-                }],
-            },
-        });
-    </script>
+        <script>
+            var ctx = document.getElementById('myPieChart').getContext('2d');
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    // labels: [ @json(number_format($loan)),  @json(number_format($deposit))],
+                    labels: [ "Risk Asset",  'Deposit'],
+                    datasets: [{
+                        data: [{{ $loan }}, {{ $deposit }}],
+                        backgroundColor: [infoColor, warningColor],
+                    }],
+                },
+            });
+        </script>
     @endif
     <!-- litepicker instance-->
     <script>
@@ -286,6 +289,10 @@
             search: true
         });
         var select_box_element = document.querySelector('#select_box3');
+        dselect(select_box_element, {
+            search: true
+        });
+        var select_box_element = document.querySelector('#select_box_rmRecords');
         dselect(select_box_element, {
             search: true
         });
