@@ -174,13 +174,13 @@ $deposit = 0;
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th class="fw-500">Total Deposit:</th>
+                                                                                <th class="fw-bold" style="color: #ffb300">Deposit:</th>
                                                                                 <td style="font-size: 13px">
                                                                                     &#8358 {{ number_format($deposit) }}
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th class="fw-500">Total Risk:</th>
+                                                                                <th class="fw-bold" style="color: #26a69a">Risk Aset:</th>
                                                                                 <td style="font-size: 13px">
                                                                                     &#8358 {{ number_format($loan) }}
                                                                                 </td>

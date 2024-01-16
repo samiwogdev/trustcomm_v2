@@ -24,6 +24,17 @@ class RmPositionController extends Controller
         }
     }
 
+    public function rm_position_avg()
+    {
+        if (Auth::guard('authUser')->check()) {
+            $rm_branches = RmBranch::orderBy('rm_branchDetails')->get();
+            $rm_records = RmRecord::orderBy('rm_lastName')->get();
+            return view('admin_view.rm_report.rm_position_avg', ['rm_branches' => $rm_branches, 'rm_records' => $rm_records]);
+        } else {
+            return redirect()->route('home');
+        }
+    }
+
     public function rm_position_data(Request $request)
     {
         if (Auth::guard('authUser')->check()) {
