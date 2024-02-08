@@ -38,13 +38,20 @@ $deposit = 0;
                 <div class="col-12 col-md-auto">
                     <div class="d-flex flex-column flex-sm-row gap-3">
                         <mwc-select class="mw-50 mb-2 mb-md-0" outlined="" label="select report">
+
                             <mwc-list-item value="default" type="button" data-bs-toggle="modal"
                                 data-bs-target="#default">Default (Me)</mwc-list-item>
+
                             <mwc-list-item value="rm" type="button" data-bs-toggle="modal"
-                                data-bs-target="#rm">Relationship Manager</mwc-list-item>
+                                data-bs-target="#rm">Relatioship Manager</mwc-list-item>
+
                             <mwc-list-item value="branch" type="button" data-bs-toggle="modal"
                                 data-bs-target="#branch">Branch/Unit</mwc-list-item>
-                        </mwc-select>
+
+
+                            <mwc-list-item value="branch" type="button" data-bs-toggle="modal"
+                            data-bs-target="#pip">PIP</mwc-list-item>
+
                     </div>
                 </div>
             </div>
@@ -430,86 +437,6 @@ $deposit = 0;
         <!-- End Main Div -->
     </main>
 
-    <!-- modal section -->
-    <!-- Defaul modal -->
-    <div class="modal fade" id="default" tabindex="-1" aria-labelledby="defaultLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fs-5" id="defaultLabel">Default Report</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('rm_position_data') }}" method="POST">@csrf
-                        <div class="row mb-5">
-                            <div class="w-100 mb-3" style="max-width: 50%">
-                                <select name="name" class="form-select mb-3" id="select_box2">
-                                    <option value="">Select Relationship Manager</option>
-                                    <option
-                                        value="{{ strtoupper(Auth::guard('authUser')->user()->rmRecord->rm_lastName) . ', ' . strtoupper(Auth::guard('authUser')->user()->rmRecord->rm_firstName) . '/' . Auth::guard('authUser')->user()->rmRecord->rm_email }}">
-                                        {{ strtoupper(Auth::guard('authUser')->user()->rmRecord->rm_lastName) . ' ' . strtoupper(Auth::guard('authUser')->user()->rmRecord->rm_firstName) }}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="w-100 mb-3" style="max-width: 21.875rem">
-                                <input type="submit" value="Preview" class="btn btn-primary p-3">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End defaul modal -->
-
-    <!-- RM modal -->
-    <div class="modal fade" id="rm" tabindex="-1" aria-labelledby="rmLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fs-5" id="rmLabel">RM Report</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('rm_position_data') }}" method="POST">@csrf
-                        <div class="row mb-2">
-                            <div class="d-sm-block d-md-none">
-                                <div class="w-100 mb-3">
-                                    <select name="name" class="form-select mb-3" id="select_box">
-                                        <option value="">Select Relationship Manager</option>
-                                        @foreach ($rm_records as $rm_record)
-                                            <option
-                                                value="{{ $rm_record->rm_lastName . ', ' . $rm_record->rm_firstName . '/' . $rm_record->rm_email }}">
-                                                {{ strtoupper($rm_record->rm_lastName . ' ' . $rm_record->rm_firstName) }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="d-none d-md-block d-lg-block">
-                                <div class="w-100 mb-3" style="max-width: 50%">
-                                    <select name="name" class="form-select mb-3" id="select_box_rmRecords">
-                                        <option value="">Select Relationship Manager</option>
-                                        @foreach ($rm_records as $rm_record)
-                                            <option
-                                                value="{{ $rm_record->rm_lastName . ', ' . $rm_record->rm_firstName . '/' . $rm_record->rm_email }}">
-                                                {{ strtoupper($rm_record->rm_lastName . ' ' . $rm_record->rm_firstName) }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="w-100 mb-3" style="max-width: 21.875rem">
-                                <input type="submit" value="Preview" class="btn btn-primary p-3">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End RM modal -->
-
     <!-- Start Branch modal -->
     <div class="modal fade" id="branch" tabindex="-1" aria-labelledby="branchLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
@@ -521,12 +448,38 @@ $deposit = 0;
                 <div class="modal-body">
                     <form action="{{ route('rm_position_data_branch') }}" method="POST">@csrf
                         <div class="row mb-2">
-                            <div class="w-100 mb-3" style="max-width: 50%">
+
+                           <div class="d-sm-block d-md-none">
+                             <div class="w-100 mb-3">
                                 <input name="date" class="form-control p-3" id="datePicker1"
-                                    placeholder="select date..." />
+                                    placeholder="select Starting Date..." />
+                             </div>
+                           </div>
+
+                           <div class="d-none d-md-block d-lg-block">
+                             <div class="w-100 mb-3" >
+                                <input name="date" class="form-control p-3" id="datePicker2"
+                                    placeholder="select Starting Date..." />
+                             </div>
+                           </div>
+
+                            <div class="d-sm-block d-md-none">
+                             <div class="w-100 mb-3">
+                                <input name="date" class="form-control p-3" id="datePicker3"
+                                    placeholder="select Ending Date..." />
                             </div>
-                            <div class="w-100 mb-3" style="max-width: 50%">
-                                <select name="branch" class="form-select mb-3" id="select_box3">
+                            </div>
+
+                             <div class="d-none d-md-block d-lg-block">
+                             <div class="w-100 mb-3" style="max-width: 50%">
+                                <input name="date" class="form-control p-3" id="datePicker4"
+                                    placeholder="select Ending Date..." />
+                            </div>
+                            </div>
+
+                             <div class="d-sm-block d-md-none">
+                            <div class="w-100 mb-3">
+                                <select name="branch" class="form-select mb-3" id="select_box">
                                     <option value="">Select Branch</option>
                                     @foreach ($rm_branches as $rm_branche)
                                         <option value="{{ $rm_branche->rm_branchCode }}">
@@ -534,6 +487,20 @@ $deposit = 0;
                                     @endforeach
                                 </select>
                             </div>
+                             </div>
+
+                          <div class="d-none d-md-block d-lg-block">
+                            <div class="w-100 mb-3" style="max-width: 50%">
+                                <select name="branch" class="form-select mb-3" id="select_box2">
+                                    <option value="">Select Branch</option>
+                                    @foreach ($rm_branches as $rm_branche)
+                                        <option value="{{ $rm_branche->rm_branchCode }}">
+                                            {{ $rm_branche->rm_branchDetails }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                             </div>
+
                         </div>
                         <div class="row mb-2">
                             <div class="w-100 mb-3" style="max-width: 21.875rem">
@@ -546,4 +513,6 @@ $deposit = 0;
         </div>
     </div>
     <!-- End Branch modal -->
+
+
 @endsection

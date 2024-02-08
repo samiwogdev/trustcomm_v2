@@ -122,12 +122,16 @@ $deposit = 0;
                                                             <td style="font-size: 13px">{{ $rm_detail->rm_unitName }} </td>
                                                         </tr>
                                                         <tr>
-                                                            <th>POSITION:</th>
-                                                            <td style="font-size: 13px">{{ $rm_detail->rm_jobTitle }}</td>
-                                                        </tr>
-                                                        <tr>
                                                             <th>GRADE:</th>
                                                             <td style="font-size: 13px">{{ $rm_detail->rm_grade }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="fw-bold" style=" color: #ffb300">DEPOSIT:</th>
+                                                            <td style="font-size: 13px">&#8358 {{ number_format($deposit) }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="fw-bold" style="font-size: 13px; color:#26a69a">RISK ASSET:</th>
+                                                            <td  style="font-size: 13px">&#8358 {{ number_format($loan) }}</td>
                                                         </tr>
                                                     @endforeach
                                                 @endif

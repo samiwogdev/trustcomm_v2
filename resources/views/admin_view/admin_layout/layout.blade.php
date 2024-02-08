@@ -98,8 +98,7 @@
                                 <a class="nav-link company_primary_color" href="{{ route('rm_position') }}">RM
                                     Position</a>
                                 <a class="nav-link company_primary_color" href="{{ route('rm_position_avg') }}">RM
-                                    Position
-                                    (Average)</a>
+                                    Average Position </a>
                             </nav>
                         </div>
                         <div class="drawer-menu-divider" style="margin-top:5px"></div>

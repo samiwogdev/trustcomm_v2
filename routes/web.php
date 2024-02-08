@@ -27,11 +27,13 @@ Route::group(['middleware' => ['authUser']], function () {
     Route::get('/rm_position', [RmPositionController::class, 'rm_position'])->name('rm_position');
     Route::get('/rm_position_avg', [RmPositionController::class, 'rm_position_avg'])->name('rm_position_avg');
     Route::match(['get', 'post'], '/rm_position_data', [RmPositionController::class, 'rm_position_data'])->name('rm_position_data');
+
+    Route::match(['get', 'post'], '/rm_avg_position_data', [RmPositionController::class, 'rm_avg_position_data'])->name('rm_avg_position_data');
     Route::match(['get', 'post'], '/rm_position_data_branch', [RmPositionController::class, 'rm_position_data_branch'])->name('rm_position_data_branch');
     Route::get('logout', [AuthUserController::class, 'logout'])->name('logout');
 });
 
-
+// rm_avg_position_data_branch
 Route::get('rm_portfolio', function () {
     return view('admin_view.rm_report.rm_portfolio');
 })->name('rm_report.rm_portfolio');
